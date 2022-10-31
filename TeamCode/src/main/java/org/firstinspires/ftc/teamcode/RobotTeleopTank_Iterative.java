@@ -75,9 +75,9 @@ public class RobotTeleopTank_Iterative extends OpMode{
         // Define and Initialize Motors
         leftFront  = hardwareMap.get(DcMotor.class, "leftFront");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
-        rightBack = hardwareMap.get(DcMotor.class, "rightFront");
-        leftBack = hardwareMap.get(DcMotor.class, "rightFront");
-        leftArm    = hardwareMap.get(DcMotor.class, "left_arm");
+        rightBack = hardwareMap.get(DcMotor.class, "rightBack");
+        leftBack = hardwareMap.get(DcMotor.class, "leftBack");
+        //Arm    = hardwareMap.get(s.class, "left_arm"); ****try as sirvo
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left and right sticks forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -120,13 +120,14 @@ public class RobotTeleopTank_Iterative extends OpMode{
      */
     @Override
     public void loop() {
-        double left;
-        double right;
+        double horizontal;
+        double vert;
+        double turn;
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forward, so negate it)
-        double horizontal =  0.7 * gamepad1.left_stick_x;
-        double vert  = -0.7 * gamepad1.left_stick_y;
-        double turn  = -0.7 * gamepad1.right_stick_x;
+        horizontal =  0.7 * gamepad1.left_stick_x;
+        vert  = -0.7 * gamepad1.left_stick_y;
+        turn  = 0.7 * gamepad1.right_stick_x;
 
 
         leftBack.setPower(vert + turn - horizontal);

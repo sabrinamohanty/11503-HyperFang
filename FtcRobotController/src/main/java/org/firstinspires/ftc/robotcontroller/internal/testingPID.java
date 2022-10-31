@@ -43,12 +43,12 @@ import com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior;
  * #livelaughlove
  *
  */
-
+/*
 @Autonomous(name="Robot: Auto Drive By Time", group="Robot")
 //@Disabled
 public class testingPID extends LinearOpMode {
 
-    /* Declare OpMode members. */
+    /* Declare OpMode members.
     private DcMotor         leftFront   = null;
     private DcMotor         rightFront  = null;
     private DcMotor         rightBack  = null;
@@ -132,3 +132,4 @@ public class testingPID extends LinearOpMode {
     }
 
 }
+*/

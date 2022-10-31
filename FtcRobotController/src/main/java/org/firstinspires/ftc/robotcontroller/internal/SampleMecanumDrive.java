@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ACCEL;
+/*import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ACCEL;
 import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ANG_ACCEL;
 import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ANG_VEL;
 import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_VEL;
@@ -46,10 +46,10 @@ import org.firstinspires.ftc.teamcode.util.LynxModuleUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+*/
 /*
  * Simple mecanum drive hardware implementation for REV hardware.
- */
+
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0.5, 0, 1);
@@ -134,7 +134,7 @@ public class SampleMecanumDrive extends MecanumDrive {
             setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, MOTOR_VELO_PID);
         }
 
-        // TODO: reverse any motors using DcMotor.setDirection()
+        TODO: reverse any motors using DcMotor.setDirection()
         rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
         rightRear.setDirection(DcMotorSimple.Direction.FORWARD);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -186,7 +186,7 @@ public class SampleMecanumDrive extends MecanumDrive {
                 encoderTicksToInches(frontEncoder.getCurrentPosition()) * Y_MULTIPLIER
         );
     }
-*/
+
     public TrajectorySequenceBuilder trajectorySequenceBuilder(Pose2d startPose) {
         return new TrajectorySequenceBuilder(
                 startPose,
@@ -338,3 +338,4 @@ public class SampleMecanumDrive extends MecanumDrive {
         return new ProfileAccelerationConstraint(maxAccel);
     }
 }
+*/
