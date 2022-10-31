@@ -125,6 +125,9 @@ public class RobotTeleopTank_Iterative extends OpMode{
         double turn;
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forward, so negate it)
+
+        
+
         horizontal =  0.7 * gamepad1.left_stick_x;
         vert  = -0.7 * gamepad1.left_stick_y;
         turn  = 0.7 * gamepad1.right_stick_x;
