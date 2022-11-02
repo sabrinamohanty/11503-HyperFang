@@ -126,17 +126,28 @@ public class RobotTeleopTank_Iterative extends OpMode{
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forward, so negate it)
 
-        
+       /* if ( gamepad1.a){
+
+        }*/
 
         horizontal =  0.7 * gamepad1.left_stick_x;
-        vert  = -0.7 * gamepad1.left_stick_y;
+        vert  = -.7 * gamepad1.left_stick_y;
         turn  = 0.7 * gamepad1.right_stick_x;
 
+        double lb = vert + turn - horizontal;
+        double lf = vert + turn + horizontal;
+        double rb = vert - turn + horizontal;
+        double rf = vert - turn - horizontal;
 
-        leftBack.setPower(vert + turn - horizontal);
-        leftFront.setPower(vert + turn + horizontal);
-        rightBack.setPower(vert - turn + horizontal);
-        rightFront.setPower(vert - turn - horizontal);
+        double lbco = lb; //- 0.12 + (.35 / ( lb + 0.6));
+        double lfco = lf; //- 0.12 + (.35 / ( lf + 0.6));
+        double rbco = rb; //- 0.12 + (.35 / ( rb + 0.6));
+        double rfco = rf; // - 0.12 + (.35 / ( rf + 0.6));
+
+        leftBack.setPower(lbco);
+        leftFront.setPower(lfco);
+        rightBack.setPower(rbco);
+        rightFront.setPower(rfco);
 
         /* Use gamepad left & right Bumpers to open and close the claw
         if (gamepad1.right_bumper)
