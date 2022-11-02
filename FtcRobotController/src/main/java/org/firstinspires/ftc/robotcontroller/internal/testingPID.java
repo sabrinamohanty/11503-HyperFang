@@ -27,44 +27,34 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
-
-import android.graphics.Bitmap;
+package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior;
 
 /**
- * This file illustrates the concept of driving a path based on time.
- * The code is structured as a LinearOpMode
+* this is the file that i'm gonna be making a base implementation of PID in, PRE TESTING.
+ * all values are kinda up for grabs right now
+ * yolo
+ * #livelaughlove
  *
- * The code assumes that you do NOT have encoders on the wheels,
- *   otherwise you would use: RobotAutoDriveByEncoder;
- *
- *   The desired path in this example is:
- *   - Drive forward for 3 seconds
- *   - Spin right for 1.3 seconds
- *   - Drive Backward for 1 Second
- *
- *  The code is written in a simple form with no optimizations.
- *  However, there are several ways that this type of sequence could be streamlined,
- *
- * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
-
+/*
 @Autonomous(name="Robot: Auto Drive By Time", group="Robot")
 //@Disabled
-public class RobotAutoDriveByTime_Linear extends LinearOpMode {
+public class testingPID extends LinearOpMode {
 
-    /* Declare OpMode members. */
+    /* Declare OpMode members.
     private DcMotor         leftFront   = null;
     private DcMotor         rightFront  = null;
     private DcMotor         rightBack  = null;
     private DcMotor         leftBack  = null;
+    private LinearOpMode newOp;
+    private GyroCode sensors;
 
     private ElapsedTime     runtime = new ElapsedTime();
 
@@ -90,65 +80,56 @@ public class RobotAutoDriveByTime_Linear extends LinearOpMode {
         leftBack.setDirection(DcMotor.Direction.REVERSE);
         rightBack.setDirection(DcMotor.Direction.FORWARD);
 
-        /*Vision vision = new Vision(this, 'r');
-        try {
-            Bitmap bmp = vision.getBitmap();
-        } catch (Exception e) {
-            //
-        }*/
-
-
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
 
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
+        while (opModeIsActive()){
 
-        // Step 1:  Drive forward for 3 seconds
-        leftFront.setPower(FORWARD_SPEED);
-        rightFront.setPower(FORWARD_SPEED);
-        leftBack.setPower(FORWARD_SPEED);
-        rightBack.setPower(FORWARD_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            telemetry.addData("Path", "Leg 1: %4.1f S Elapsed", runtime.seconds());
-            telemetry.update();
         }
-
-        // Step 2:  Spin right for 1.3 seconds
-        leftFront.setPower(TURN_SPEED);
-        rightFront.setPower(-TURN_SPEED);
-        leftBack.setPower(TURN_SPEED);
-        rightBack.setPower(-TURN_SPEED);
-
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
-            telemetry.addData("Path", "Leg 2: %4.1f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 3:  Drive Backward for 1 Second
-        leftFront.setPower(-FORWARD_SPEED);
-        rightFront.setPower(-FORWARD_SPEED);
-        leftBack.setPower(-FORWARD_SPEED);
-        rightBack.setPower(-FORWARD_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            telemetry.addData("Path", "Leg 3: %4.1f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 4:  Stop
-        leftFront.setPower(0);
-        rightFront.setPower(0);
-        leftBack.setPower(0);
-        rightBack.setPower(0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
     }
+
+    public double getAvgEncoder(){
+
+        double div = 4;
+        double avgAdd = leftBack.getCurrentPosition() + rightBack.getCurrentPosition() + leftFront.getCurrentPosition() + rightFront.getCurrentPosition();
+        double avg = 0;
+
+        if (leftBack.getCurrentPosition() == 0 ) {
+            div--;
+        }
+
+        if ( rightBack.getCurrentPosition() == 0){
+            div--;
+        }
+
+        if ( leftFront.getCurrentPosition() == 0){
+            div--;
+        }
+
+        if ( rightFront.getCurrentPosition() == 0){
+            div--;
+        }
+
+        if ( div == 0);
+    }
+
 }
+*/
